@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerala Free Mods for BUSSID | Roman DS</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+ min-height:100vh;
+ background:#E1EAB6;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ font-family:'Montserrat',Arial,sans-serif;
+ overflow:hidden;
+}
+
+/* PAGE 1 - JELLY BALL ROMAN DS */
+.logo-intro {
+ position:fixed;
+ inset:0;
+ width:100%;
+ height:100%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#9A3412;
+ z-index:999;
+ animation:introFade .25s ease 4s forwards;
+}
+.logo-intro svg {
+ display:block;
+ width:min(84vw,760px);
+ max-width:1000px;
+ height:auto;
+ overflow:visible;
+}
+.logo-intro .trace {
+ fill:none;
+ stroke:#FFF0D5;
+ stroke-width:12;
+ stroke-linecap:round;
+ stroke-linejoin:round;
+ stroke-dasharray:1;
+ stroke-dashoffset:1;
+}
+.logo-intro .trace-r {animation:drawPath .45s linear .30s forwards}
+.logo-intro .trace-o {animation:drawPath .45s linear .75s forwards}
+.logo-intro .trace-m {animation:drawPath .55s linear 1.20s forwards}
+.logo-intro .trace-a {animation:drawPath .50s linear 1.75s forwards}
+.logo-intro .trace-n {animation:drawPath .50s linear 2.25s forwards}
+.logo-intro .trace-d {animation:drawPath .50s linear 2.75s forwards}
+.logo-intro .trace-s {animation:drawPath .60s linear 3.25s forwards}
+
+.logo-intro .moving-ball {
+ fill:#FFD166;
+ opacity:0;
+}
+@keyframes drawPath {
+ to {stroke-dashoffset:0}
+}
+@keyframes introFade {
+ to {opacity:0;visibility:hidden}
+}
+@media(max-width:600px) {
+ .logo-intro svg {width:min(88vw,700px)}
+}/* PAGE 2 - FULL SCREEN IMAGE WITH LOADING BAR */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    display: block;
+    background: #101812 url("assets/page2-bg.png") center center / cover no-repeat;
+    overflow: hidden;
+}
+
+.rd-loading-ui {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 7%;
+    text-align: center;
+}
+
+.rd-loading-track {
+    width: 100%;
+    height: 9px;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.rd-loading-fill {
+    width: 0%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 20px;
+    transition: width 0.05s linear;
+}
+
+.rd-loading-percent {
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 12px;
+    text-shadow: 0 2px 5px #000000;
+}
+/* PAGE 3 - HOME */
+
+.home-screen{
+ display:none;
+ position:fixed;
+ inset:0;
+ min-height:100vh;
+ overflow-y:auto;
+ background:#F4F1DE;
+ color:#000;
+ padding:20px 20px;
+}
+
+.home-content{
+ transform:translateY(25px);
+ width:100%;
+ max-width:650px;
+ margin:0 auto;
+ text-align:center;
+}
+
+.home-logo{
+ width:76px;
+ height:76px;
+ margin:12px auto 18px;
+ border-radius:24px;
+ background:#26351B;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:40px;
+ box-shadow:0 8px 0 #B8B366;
+}
+
+.home-title{
+ font-size:clamp(27px,6vw,42px);
+ font-weight:800;
+ line-height:1.2;
+ letter-spacing:1px;
+ color:#26351B;
+ margin-bottom:8px;
+}
+
+.home-subtitle{
+ color:#555;
+ font-size:13px;
+ font-weight:600;
+ margin-bottom:25px;
+ letter-spacing:1px;
+}
+
+.home-buttons{
+ display:flex;
+ flex-direction:column;
+ gap:14px;
+ margin-top:12px;
+}
+
+.home-button{
+ width:100%;
+ min-height:88px;
+ border:3px solid #26351B;
+ border-radius:18px;
+ background:#B8B366;
+ color:#000;
+ font-family:inherit;
+ font-size:clamp(18px,4vw,23px);
+ font-weight:800;
+ cursor:pointer;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:16px;
+ box-shadow:0 7px 0 #26351B;
+ transition:transform .15s,box-shadow .15s;
+}
+
+.home-button:active{
+ transform:translateY(5px);
+ box-shadow:0 2px 0 #26351B;
+}
+
+.button-icon{
+ font-size:30px;
+}
+
+.home-footer{
+ margin-top:30px;
+ color:#26351B;
+ font-size:12px;
+ font-weight:700;
+ letter-spacing:2px;
+}
+
+@media(min-width:600px){
+ .home-buttons{
+  flex-direction:row;
+ }
+ .home-button{
+  min-height:150px;
+  flex-direction:column;
+ }
+}
+
+/* PAGE 4 - UPLOAD YOUR MOD */
+
+.upload-screen {
+ display:none;
+ position:fixed;
+ inset:0;
+ width:100%;
+ height:100%;
+ overflow-y:auto;
+ background:#E6E6FA;
+ color:#000;
+ padding:25px 18px 45px;
+ z-index:10;
+}
+
+.upload-container {
+ width:100%;
+ max-width:100%;
+ margin:0 auto;
+}
+
+.upload-heading {
+ font-size:clamp(27px,5vw,38px);
+ font-weight:800;
+ text-align:center;
+ margin:15px 0 8px;
+}
+
+.upload-subtitle {
+ text-align:center;
+ font-size:14px;
+ color:#555;
+ margin-bottom:28px;
+}
+
+.upload-form {
+ width:100%;
+ display:flex;
+ flex-direction:column;
+ gap:18px;
+}
+
+.form-group {
+ display:flex;
+ flex-direction:column;
+ gap:8px;
+}
+
+.form-group label {
+ font-size:14px;
+ font-weight:700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+ width:100%;
+ padding:15px;
+ border:1px solid #aaa;
+ border-radius:9px;
+ background:#fff;
+ color:#000;
+ font-family:inherit;
+ font-size:15px;
+ outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+ border:2px solid #26351B;
+}
+
+.form-group textarea {
+ min-height:120px;
+ resize:vertical;
+}
+
+.form-hint {
+ font-size:12px;
+ color:#555;
+}
+
+.photo-input {
+ padding:14px !important;
+}
+
+.submit-mod {
+ width:100%;
+ padding:17px;
+ border:0;
+ border-radius:9px;
+ background:#000;
+ color:#fff;
+ font-family:inherit;
+ font-size:16px;
+ font-weight:800;
+ cursor:pointer;
+}
+
+.back-home {
+ display:block;
+ margin:0 auto 15px;
+ padding:10px 18px;
+ border:1px solid #000;
+ border-radius:8px;
+ background:transparent;
+ color:#000;
+ font-family:inherit;
+ font-weight:700;
+ cursor:pointer;
+}
+
+
+/* PAGE 5 - GAME SELECTION */
+#page5 {
+    display: none;
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    background: #111827;
+    color: white;
+    padding: 35px 12px;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    z-index: 20;
+}
+
+#page5 h1 {
+    font-size: clamp(20px, 4vw, 32px);
+    margin: 20px 0 35px;
+    letter-spacing: 1px;
+}
+
+.game-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+}
+
+.game-card {
+    background: #26351B;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 0;
+    color: white;
+    cursor: pointer;
+    min-width: 0;
+}
+
+.game-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.game-card span {
+    display: block;
+    padding: 12px 3px;
+    font-size: clamp(10px, 2.5vw, 15px);
+    font-weight: bold;
+}
+
+#selectedGame {
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+#page5 .back-home {
+    margin-top: 25px;
+    padding: 12px 24px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* PAGE 6 - INDONESIA CATEGORIES */
+#page6 {
+    display: none;
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    background: #111827;
+    color: white;
+    padding: 35px 10px;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    z-index: 30;
+}
+
+#page6 h1 {
+    font-size: clamp(18px, 4vw, 30px);
+    margin: 20px 0 35px;
+}
+
+.indonesia-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    width: 100%;
+    max-width: 950px;
+    margin: auto;
+}
+
+.indonesia-card {
+    background: #26351B;
+    border: none;
+    border-radius: 13px;
+    overflow: hidden;
+    padding: 0;
+    color: white;
+    cursor: pointer;
+    min-width: 0;
+}
+
+.indonesia-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.indonesia-card span {
+    display: block;
+    padding: 10px 2px;
+    font-size: clamp(9px, 2vw, 14px);
+    font-weight: bold;
+}
+
+#page6Back {
+    margin-top: 28px;
+    padding: 12px 22px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* PAGES 7-20 */
+.game-category-page,
+.mod-list-page {
+    display: none;
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    background: #111827;
+    color: white;
+    padding: 30px 12px;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    z-index: 40;
+}
+
+.game-category-page h1,
+.mod-list-page h1 {
+    font-size: clamp(18px, 4vw, 30px);
+    margin: 20px 0 30px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    width: 100%;
+    max-width: 950px;
+    margin: auto;
+}
+
+.category-card {
+    background: #26351B;
+    border: none;
+    border-radius: 13px;
+    overflow: hidden;
+    padding: 0;
+    color: white;
+    cursor: pointer;
+    min-width: 0;
+}
+
+.category-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.category-card span {
+    display: block;
+    padding: 10px 2px;
+    font-size: clamp(9px, 2vw, 14px);
+    font-weight: bold;
+}
+
+.mod-list {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.mod-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #26351B;
+    border-radius: 13px;
+    padding: 12px;
+    text-align: left;
+    min-width: 0;
+}
+
+.mod-card img {
+    width: 105px;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 9px;
+    flex-shrink: 0;
+}
+
+.mod-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.mod-card-info h2 {
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.mod-card-info p {
+    color: #dddddd;
+    font-size: 12px;
+    margin: 0 0 10px;
+}
+
+.mod-download {
+    display: inline-block;
+    background: #B8B366;
+    color: black;
+    text-decoration: none;
+    padding: 9px 15px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.mod-empty {
+    background: #26351B;
+    border-radius: 13px;
+    padding: 25px 12px;
+    margin: auto;
+    width: 100%;
+    max-width: 850px;
+    box-sizing: border-box;
+    color: #dddddd;
+    font-size: 14px;
+}
+
+.page-back {
+    margin-top: 25px;
+    padding: 12px 22px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* PAGE 3 ROMAN DS LOGO */
+.rd-brand-logo {
+  display: block;
+  width: 155px;
+  height: 52px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 8px;
+}
+</style>
+<style>
+/* ROMAN DS - PAGE 3 MOBILE GAMING REDESIGN */
+.home-screen {
+ background:#edf1e5;
+ color:#26351B;
+ padding:16px 14px 30px;
+}
+.home-content {
+ transform:none;
+ width:100%;
+ max-width:760px;
+ margin:0 auto;
+ text-align:left;
+}
+.rd-home-header {
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin:0 auto 18px;
+}
+.rd-brand {display:flex;align-items:center;gap:10px}
+.rd-brand-icon {
+ width:46px;height:46px;border-radius:15px;
+ background:#26351B;display:grid;place-items:center;
+ font-size:25px;box-shadow:0 4px 0 #B8B366;
+}
+.rd-brand strong {display:block;font-size:17px;letter-spacing:1px}
+.rd-brand small {display:block;font-size:9px;letter-spacing:1.3px;color:#68745c;margin-top:3px}
+.rd-status {
+ background:#dce6ce;color:#40552d;border-radius:20px;
+ padding:8px 11px;font-size:10px;font-weight:800;
+}
+.rd-welcome {
+ position:relative;overflow:hidden;
+ background:linear-gradient(120deg,#26351B,#52683a);
+ color:#fff;border-radius:23px;padding:25px 20px;
+ min-height:165px;box-shadow:0 7px 18px #26351b20;
+}
+.rd-eyebrow {font-size:9px;font-weight:800;letter-spacing:1.7px;color:#d8dfbd}
+.rd-welcome h1 {
+ font-size:clamp(25px,7vw,39px);line-height:1.08;
+ font-weight:900;letter-spacing:.4px;margin:12px 0 8px;
+}
+.rd-welcome h1 span {color:#d4d78d}
+.rd-welcome p {font-size:12px;color:#e3e9d9;max-width:260px;line-height:1.5;margin:0}
+.rd-welcome-decoration {
+ position:absolute;right:17px;bottom:15px;font-size:62px;
+ opacity:.18;transform:rotate(-12deg);
+}
+.rd-actions {
+ display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:16px 0 25px;
+}
+.rd-action {
+ min-width:0;min-height:78px;border:0;border-radius:17px;
+ padding:12px 10px;display:flex;align-items:center;gap:10px;
+ text-align:left;cursor:pointer;font-family:inherit;
+ box-shadow:0 4px 0 #26351b20;transition:transform .15s;
+}
+.rd-action:active,.rd-game-card:active {transform:scale(.97)}
+.rd-upload {background:#c6c77c;color:#26351B}
+.rd-download {background:#26351B;color:#fff}
+.rd-action-icon {font-size:27px}
+.rd-action strong {display:block;font-size:clamp(10px,2.8vw,13px);font-weight:900}
+.rd-action small {display:block;font-size:9px;margin-top:4px;opacity:.75}
+.rd-section {margin:0 0 25px}
+.rd-section-heading {
+ display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;
+}
+.rd-section-heading span:first-child {
+ display:block;font-size:9px;font-weight:800;letter-spacing:1.5px;color:#7a845f;
+}
+.rd-section-heading h2 {font-size:18px;font-weight:900;margin:3px 0 0;color:#26351B}
+.rd-section-symbol {font-size:24px}
+.rd-home-games {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.rd-game-card {
+ min-width:0;overflow:hidden;padding:0 0 11px;
+ border:1px solid #dce2d2;border-radius:15px;
+ background:#fff;color:#26351B;text-align:left;
+ cursor:pointer;font-family:inherit;
+ box-shadow:0 3px 12px #26351b0c;transition:transform .15s;
+}
+.rd-game-card img {display:block;width:100%;height:92px;object-fit:cover}
+.rd-game-card span {
+ display:block;font-size:clamp(9px,2.7vw,12px);
+ font-weight:900;margin:9px 7px 2px;
+}
+.rd-game-card small {display:block;font-size:8px;color:#7b846e;margin:0 7px}
+.rd-live-label {font-size:9px!important;color:#55753b!important;letter-spacing:1px}
+.rd-latest-list {display:grid;gap:9px}
+.rd-latest-empty {
+ background:#fff;border:1px dashed #c9d2ba;border-radius:14px;
+ padding:18px;text-align:center;color:#737d65;font-size:12px;
+}
+.rd-latest-card {
+ display:flex;align-items:center;gap:11px;padding:10px;
+ background:#fff;border:1px solid #e0e5d8;border-radius:15px;
+ box-shadow:0 3px 12px #26351b0a;min-width:0;
+}
+.rd-latest-card img {
+ width:68px;height:68px;object-fit:cover;border-radius:11px;
+ background:#e5eadc;flex-shrink:0;
+}
+.rd-latest-info {min-width:0;flex:1}
+.rd-latest-info strong {
+ display:block;font-size:13px;color:#26351B;
+ overflow-wrap:anywhere;
+}
+.rd-latest-info p {font-size:10px;color:#707966;margin:4px 0;overflow-wrap:anywhere}
+.rd-latest-info small {font-size:9px;color:#7b865f}
+.rd-latest-download {
+ display:inline-block;margin-top:6px;padding:7px 10px;
+ border-radius:9px;background:#26351B;color:#fff;
+ text-decoration:none;font-size:9px;font-weight:800;
+}
+.rd-home-footer {
+ border-top:1px solid #d7deca;padding-top:16px;
+ text-align:center;color:#788269;
+}
+.rd-home-footer strong {display:block;font-size:13px;letter-spacing:2px;color:#40552d}
+.rd-home-footer span {display:block;font-size:9px;letter-spacing:1.7px;margin-top:5px}
+@media(min-width:600px) {
+ .home-screen {padding:25px}
+ .rd-welcome {padding:32px;min-height:190px}
+ .rd-actions {gap:15px}
+ .rd-action {min-height:88px;padding:16px}
+ .rd-game-card img {height:145px}
+ .rd-game-card span {font-size:13px;margin:11px 10px 3px}
+ .rd-game-card small {font-size:9px;margin:0 10px}
+ .rd-latest-card img {width:82px;height:82px}
+}
+
+/* PAGE 3 ROMAN DS LOGO */
+.rd-brand-logo {
+  display: block;
+  width: 155px;
+  height: 52px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="logo-intro">
+ <svg viewBox="0 0 1060 150" role="img" aria-label="Roman DS animated logo">
+  <g>
+   <path class="trace trace-r" pathLength="1"
+    d="M30 125 L30 25 L75 25 C125 25 125 75 75 75 L30 75 L75 75 L130 125"/>
+   <path class="trace trace-o" pathLength="1"
+    d="M160 75 C160 8 260 8 260 75 C260 142 160 142 160 75 Z"/>
+   <path class="trace trace-m" pathLength="1"
+    d="M290 125 L290 25 L360 85 L430 25 L430 125"/>
+   <path class="trace trace-a" pathLength="1"
+    d="M460 125 L500 25 L540 125 L480 85 L520 85"/>
+   <path class="trace trace-n" pathLength="1"
+    d="M600 125 L600 25 L720 125 L720 25"/>
+   <path class="trace trace-d" pathLength="1"
+    d="M790 125 L790 25 L830 25 C920 25 920 125 830 125 Z"/>
+   <path class="trace trace-s" pathLength="1"
+    d="M1030 25 C950 0 920 60 980 75 C1040 90 1010 150 930 125"/>
+
+   <circle class="moving-ball" r="11">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <set attributeName="opacity" to="0" begin=".30s"/>
+    <animateMotion begin="0s" dur=".30s" fill="freeze"
+     path="M30 -12 Q8 55 30 125 Q50 145 30 125"/>
+   </circle>
+
+   <circle class="moving-ball" r="11">
+    <set attributeName="opacity" to="1" begin=".30s"/>
+    <set attributeName="opacity" to="0" begin=".75s"/>
+    <animateMotion begin=".30s" dur=".45s" fill="freeze"
+     path="M30 125 L30 25 L75 25 C125 25 125 75 75 75 L30 75 L75 75 L130 125"/>
+   </circle>
+
+   <circle class="moving-ball" r="11">
+    <set attributeName="opacity" to="1" begin=".75s"/>
+    <set attributeName="opacity" to="0" begin="1.20s"/>
+    <animateMotion begin=".75s" dur=".45s" fill="freeze"
+     path="M160 75 C160 8 260 8 260 75 C260 142 160 142 160 75 Z"/>
+   </circle>
+
+   <circle class="moving-ball" r="11">
+    <set attributeName="opacity" to="1" begin="1.20s"/>
+    <set attributeName="opacity" to="0" begin="1.75s"/>
+    <animateMotion begin="1.20s" dur=".55s" fill="freeze"
+     path="M290 125 L290 25 L360 85 L430 25 L430 125"/>
+   </circle>
+
+   <circle class="moving-ball" r="11">
+    <set attributeName="opacity" to="1" begin="1.75s"/>
+    <set attributeName="opacity" to="0" begin="2.25s"/>
+    <animateMotion begin="1.75s" dur=".50s" fill="freeze"
+     path="M460 125 L500 25 L540 125 L480 85 L520 85"/>
+   </circle>
+
+   <circle class="moving-ball" r="11">
+    <set attributeName="opacity" to="1" begin="2.25s"/>
+    <set attributeName="opacity" to="0" begin="2.75s"/>
+    <animateMotion begin="2.25s" dur=".50s" fill="freeze"
+     path="M600 125 L600 25 L720 125 L720 25"/>
+   </circle>
+
+   <circle class="moving-ball" r="11">
+    <set attributeName="opacity" to="1" begin="2.75s"/>
+    <set attributeName="opacity" to="0" begin="3.25s"/>
+    <animateMotion begin="2.75s" dur=".50s" fill="freeze"
+     path="M790 125 L790 25 L830 25 C920 25 920 125 830 125 Z"/>
+   </circle>
+
+   <circle class="moving-ball" r="11">
+    <set attributeName="opacity" to="1" begin="3.25s"/>
+    <set attributeName="opacity" to="0" begin="4s"/>
+    <animateMotion begin="3.25s" dur=".60s" fill="freeze"
+     path="M1030 25 C950 0 920 60 980 75 C1040 90 1010 150 930 125"/>
+   </circle>
+  </g>
+ </svg>
+</div>
+
+<!-- PAGE 2 -->
+<div class="loading-screen" id="page2">
+    <div class="rd-page2-title">KERALA FREE MODS</div>
+    <div class="rd-loading-ui">
+        <div class="rd-loading-percent" id="rdLoadingPercent">0%</div>
+        <div class="rd-loading-track">
+            <div class="rd-loading-fill" id="rdLoadingFill"></div>
+        </div>
+        <div class="rd-loading-total">100%</div>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="home-screen" id="page3">
+ <div class="home-content">
+
+  <header class="rd-home-header">
+   <div class="rd-brand">
+    <img class="rd-brand-logo" src="assets/desighn/romanlogo.jpeg" alt="Roman DS Logo">
+   </div>
+   <span class="rd-status">● MOD HUB</span>
+  </header>
+
+  <section class="rd-welcome">
+   <span class="rd-eyebrow">WELCOME TO YOUR GAMING ZONE</span>
+   <h1>BUS SIMULATOR<br><span>MOD HUB</span></h1>
+   <p>Discover new mods. Share your creations. Enjoy the ride.</p>
+   <div class="rd-welcome-decoration">🎮</div>
+  </section>
+
+  <section class="rd-actions">
+   <button id="uploadButton" class="rd-action rd-upload" type="button">
+    <span class="rd-action-icon">⬆</span>
+    <span><strong>UPLOAD MODS</strong><small>Share your creation</small></span>
+   </button>
+   <button id="downloadButton" class="rd-action rd-download" type="button">
+    <span class="rd-action-icon">⬇</span>
+    <span><strong>DOWNLOAD MODS</strong><small>Explore new mods</small></span>
+   </button>
+  </section>
+
+  <section class="rd-section">
+   <div class="rd-section-heading">
+    <div><span>EXPLORE</span><h2>CHOOSE YOUR GAME</h2></div>
+    <span class="rd-section-symbol">🎮</span>
+   </div>
+   <div class="rd-home-games">
+    <button class="rd-game-card" type="button" data-home-game="indonesia">
+     <img src="assets/indonesia/indonesia.jfif" alt="Indonesia bus simulator">
+     <span>INDONESIA</span><small>BUS SIMULATOR</small>
+    </button>
+    <button class="rd-game-card" type="button" data-home-game="india">
+     <img src="assets/india/india.jpg" alt="India bus simulator">
+     <span>INDIA</span><small>BUS SIMULATOR</small>
+    </button>
+    <button class="rd-game-card" type="button" data-home-game="kerala">
+     <img src="assets/kerala/kerala.jfif" alt="Kerala bus simulator">
+     <span>KERALA</span><small>BUS SIMULATOR</small>
+    </button>
+   </div>
+  </section>
+
+  <section class="rd-section rd-latest-section">
+   <div class="rd-section-heading">
+    <div><span>FRESH FROM THE COMMUNITY</span><h2>LATEST MODS</h2></div>
+    <span class="rd-live-label">● LIVE</span>
+   </div>
+   <div id="homeLatestMods" class="rd-latest-list">
+    <div class="rd-latest-empty">Approved mods will appear here automatically.</div>
+   </div>
+  </section>
+   <footer class="rd-home-footer">
+   <strong>ROMAN DS</strong>
+   <span>POWERED BY ROMAN DS</span>
+  </footer>
+
+ </div>
+</div>
+
+<script>
+(() => {
+    const duration = 8000;
+    const fill = document.getElementById('rdLoadingFill');
+    const percent = document.getElementById('rdLoadingPercent');
+    const page2 = document.getElementById('page2');
+    const page3 = document.getElementById('page3');
+    const start = performance.now();
+
+    function updateLoading(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const value = Math.floor(progress * 100);
+
+        fill.style.width = value + "%";
+        percent.textContent = value + "%";
+
+        if (progress < 1) {
+            requestAnimationFrame(updateLoading);
+        } else {
+            page2.style.display = "none";
+            page3.style.display = "block";
+        }
+    }
+
+    requestAnimationFrame(updateLoading);
+})();
+</script>
+
+
+<!-- PAGE 4 - SHARE YOUR MOD -->
+<div class="upload-screen" id="page4">
+
+ <div class="upload-container">
+
+  <button class="back-home" id="backHome" type="button">
+   ← BACK TO HOME
+  </button>
+
+  <h1 class="upload-heading">SHARE YOUR MOD</h1>
+  <p class="upload-subtitle">
+   Share your mod with the community
+  </p>
+
+  <form class="upload-form" id="uploadForm">
+
+<div class="form-group">
+<label for="game">1. Select Game *</label>
+<select id="game" required>
+<option value="">Choose game</option>
+<option>Bus Simulator Indonesia</option>
+<option>Bus Simulator Kerala</option>
+<option>Bus Simulator India</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="category">2. Select Category / Section *</label>
+<select id="category" required>
+<option value="">Choose section</option>
+<option>Vehicle Mods</option>
+<option>Bus Liveries</option>
+<option>Horns</option>
+<option>Maps</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="modName">3. Mod Name *</label>
+<input id="modName" type="text" placeholder="Enter mod name..." required>
+</div>
+
+<div class="form-group">
+<label for="description">4. Mod Details *</label>
+<textarea id="description" placeholder="Describe your mod..." required></textarea>
+</div>
+
+<div class="form-group">
+<label for="uploader">5. Uploader Name *</label>
+<input id="uploader" type="text" placeholder="Your name..." required>
+</div>
+
+<div class="form-group">
+<label for="uploadType">6. Upload Type *</label>
+<select id="uploadType" required>
+<option value="">Choose upload type</option>
+<option value="zip">ZIP File</option>
+<option value="link">Download Link</option>
+</select>
+</div>
+
+<div class="form-group" id="zipUploadFields" style="display:none;">
+<label for="zipFile">Upload ZIP (Maximum 100 MB) *</label>
+<input id="zipFile" type="file" accept=".zip,application/zip">
+<span class="form-hint">Select your mod ZIP file.</span>
+<label for="optionalLink">Optional Download Link</label>
+<input id="optionalLink" type="url" placeholder="Paste optional link...">
+</div>
+
+<div class="form-group" id="linkUploadFields" style="display:none;">
+<label for="downloadLink">Download Link *</label>
+<input id="downloadLink" type="url" placeholder="Paste your download link...">
+</div>
+
+<p id="uploadStatus" class="form-hint"></p>
+
+<button class="submit-mod" type="submit">
+CONTINUE TO SUBMIT
+</button>
+
+</form>
+
+<script>
+(function () {
+const type = document.getElementById("uploadType");
+const zipFields = document.getElementById("zipUploadFields");
+const linkFields = document.getElementById("linkUploadFields");
+const zip = document.getElementById("zipFile");
+const link = document.getElementById("downloadLink");
+
+type.addEventListener("change", function () {
+zipFields.style.display = this.value === "zip" ? "block" : "none";
+linkFields.style.display = this.value === "link" ? "block" : "none";
+zip.required = this.value === "zip";
+link.required = this.value === "link";
+});
+
+zip.addEventListener("change", function () {
+if (this.files[0] && this.files[0].size > 100 * 1024 * 1024) {
+alert("ZIP file must be 100 MB or smaller.");
+this.value = "";
+}
+});
+})();
+</script>
+ </div>
+</div>
+
+
+<!-- PAGE 5: DOWNLOAD MODS -->
+<section id="page5">
+    <h1 class="rd-page5-heading">SELECT YOUR GAME</h1>
+
+    <div class="game-cards">
+        <button class="game-card" type="button" data-game="Bus Simulator Indonesia">
+            <img src="assets/indonesia/indonesia.jfif" alt="Bus Simulator Indonesia">
+            <span>BUS SIMULATOR INDONESIA</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="Bus Simulator India">
+            <img src="assets/india/india.jpg" alt="Bus Simulator India">
+            <span>BUS SIMULATOR INDIA</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="Bus Simulator Kerala">
+            <img src="assets/kerala/kerala.jfif" alt="Bus Simulator Kerala">
+            <span>BUS SIMULATOR KERALA</span>
+        </button>
+    </div>
+
+    <div class="rd-coming-soon-list">
+        <div class="rd-coming-soon">COMING SOON</div>
+        <div class="rd-coming-soon">COMING SOON</div>
+    </div>
+
+    <p id="selectedGame">Choose your game</p>
+    <button class="back-home" id="page5Back" type="button">BACK TO HOME</button>
+</section>
+<script>
+/* PAGE 5 NAVIGATION */
+const downloadButton = document.getElementById("downloadButton");
+const page5 = document.getElementById("page5");
+const page3 = document.getElementById("page3");
+
+if (downloadButton) {
+    downloadButton.addEventListener("click", function () {
+        page3.style.display = "none";
+        page5.style.display = "block";
+    });
+}
+
+document.getElementById("page5Back").addEventListener("click", function () {
+    page5.style.display = "none";
+    page3.style.display = "block";
+});
+
+document.querySelectorAll(".game-card").forEach(function (card) {
+    card.addEventListener("click", function () {
+        document.getElementById("selectedGame").textContent =
+            "Selected: " + card.dataset.game;
+    });
+});</script>
+<script>
+const downloadButton = document.getElementById("downloadButton");
+const page5 = document.getElementById("page5");
+const page3 = document.getElementById("page3");
+
+if (downloadButton && page5 && page3) {
+    downloadButton.onclick = function () {
+        page3.style.display = "none";
+        page5.style.display = "block";
+    };
+}
+</script>
+
+<!-- PAGE 6: BUS SIMULATOR INDONESIA -->
+<section id="page6">
+    <h1>BUS SIMULATOR INDONESIA</h1>
+
+    <div class="indonesia-cards">
+
+        <button class="indonesia-card" type="button" data-category="Vehicle Mods">
+            <img src="assets/indonesia/vehicle-mods/vehiclemod.jfif" alt="Vehicle Mods">
+            <span>VEHICLE MODS</span>
+        </button>
+
+        <button class="indonesia-card" type="button" data-category="Bus Liveries">
+            <img src="assets/indonesia/bus-liveries/livery.jfif" alt="Bus Liveries">
+            <span>BUS LIVERIES</span>
+        </button>
+
+        <button class="indonesia-card" type="button" data-category="Horns">
+            <img src="assets/indonesia/horns/horn.jfif" alt="Horns">
+            <span>HORNS</span>
+        </button>
+
+        <button class="indonesia-card" type="button" data-category="Maps">
+            <img src="assets/indonesia/maps/mapmod.jfif" alt="Maps">
+            <span>MAPS</span>
+        </button>
+
+    </div>
+
+    <p id="indonesiaCategorySelected">SELECT A CATEGORY</p>
+    <button id="page6Back" type="button">BACK TO GAMES</button>
+</section>
+<script>
+/* PAGE 6 NAVIGATION */
+const indonesiaCard = document.querySelector(
+    '.game-card[data-game="Bus Simulator Indonesia"]'
+);
+const indonesiaPage = document.getElementById("page6");
+const gamesPage = document.getElementById("page5");
+
+if (indonesiaCard && indonesiaPage && gamesPage) {
+    indonesiaCard.addEventListener("click", function () {
+        gamesPage.style.display = "none";
+        indonesiaPage.style.display = "block";
+    });
+}
+
+document.getElementById("page6Back").addEventListener("click", function () {
+    indonesiaPage.style.display = "none";
+    gamesPage.style.display = "block";
+});
+
+document.querySelectorAll(".indonesia-card").forEach(function (card) {
+    card.addEventListener("click", function () {
+        document.getElementById("indonesiaCategorySelected").textContent =
+            "Selected: " + card.dataset.category;
+    });
+});</script>
+<section class="game-category-page" id="page11">
+    <h1>BUS SIMULATOR INDIA</h1>
+    <div class="category-grid">
+        <button class="category-card" type="button" data-target-page="12">
+            <img src="assets/indonesia/vehicle-mods/vehiclemod.jfif" alt="Vehicle Mods">
+            <span>VEHICLE MODS</span>
+        </button>        <button class="category-card" type="button" data-target-page="12">
+            <img src="assets/indonesia/bus-liveries/livery.jfif" alt="Bus Liveries">
+            <span>BUS LIVERIES</span>
+        </button>        <button class="category-card" type="button" data-target-page="12">
+            <img src="assets/indonesia/horns/horn.jfif" alt="Horns">
+            <span>HORNS</span>
+        </button>        <button class="category-card" type="button" data-target-page="12">
+            <img src="assets/indonesia/maps/mapmod.jfif" alt="Maps">
+            <span>MAPS</span>
+        </button>
+    </div>
+    <button class="page-back" data-back="page5" type="button">BACK TO GAMES</button>
+</section>
+<section class="game-category-page" id="page16">
+    <h1>BUS SIMULATOR KERALA</h1>
+    <div class="category-grid">
+        <button class="category-card" type="button" data-target-page="17">
+            <img src="assets/indonesia/vehicle-mods/vehiclemod.jfif" alt="Vehicle Mods">
+            <span>VEHICLE MODS</span>
+        </button>        <button class="category-card" type="button" data-target-page="17">
+            <img src="assets/indonesia/bus-liveries/livery.jfif" alt="Bus Liveries">
+            <span>BUS LIVERIES</span>
+        </button>        <button class="category-card" type="button" data-target-page="17">
+            <img src="assets/indonesia/horns/horn.jfif" alt="Horns">
+            <span>HORNS</span>
+        </button>        <button class="category-card" type="button" data-target-page="17">
+            <img src="assets/indonesia/maps/mapmod.jfif" alt="Maps">
+            <span>MAPS</span>
+        </button>
+    </div>
+    <button class="page-back" data-back="page5" type="button">BACK TO GAMES</button>
+</section>
+<section class="mod-list-page" id="page7">
+    <h1>BUS SIMULATOR INDONESIA - VEHICLE MODS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page6" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page8">
+    <h1>BUS SIMULATOR INDONESIA - BUS LIVERIES</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page6" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page9">
+    <h1>BUS SIMULATOR INDONESIA - HORNS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page6" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page10">
+    <h1>BUS SIMULATOR INDONESIA - MAPS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page6" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page12">
+    <h1>BUS SIMULATOR INDIA - VEHICLE MODS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page11" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page13">
+    <h1>BUS SIMULATOR INDIA - BUS LIVERIES</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page11" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page14">
+    <h1>BUS SIMULATOR INDIA - HORNS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page11" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page15">
+    <h1>BUS SIMULATOR INDIA - MAPS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page11" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page17">
+    <h1>BUS SIMULATOR KERALA - VEHICLE MODS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page16" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page18">
+    <h1>BUS SIMULATOR KERALA - BUS LIVERIES</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page16" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page19">
+    <h1>BUS SIMULATOR KERALA - HORNS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page16" type="button">BACK</button>
+</section>
+<section class="mod-list-page" id="page20">
+    <h1>BUS SIMULATOR KERALA - MAPS</h1>
+    <div class="mod-list">
+        <div class="mod-empty">
+            <strong>MODS WILL APPEAR HERE</strong>
+            <p>Mods uploaded for this game and category will be listed here.</p>
+        </div>
+    </div>
+    <button class="page-back" data-back="page16" type="button">BACK</button>
+</section>
+<script>(function () {
+    function showPage(id) {
+        const ids = [
+            "page5", "page6", "page11", "page16",
+            "page7", "page8", "page9", "page10",
+            "page12", "page13", "page14", "page15",
+            "page17", "page18", "page19", "page20"
+        ];
+
+        ids.forEach(function (pageId) {
+            const element = document.getElementById(pageId);
+            if (element) element.style.display = "none";
+        });
+
+        const target = document.getElementById(id);
+        if (target) target.style.display = "block";
+    }
+
+    document.querySelectorAll('.game-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            const game = card.dataset.game;
+
+            if (game === "Bus Simulator India") showPage("page11");
+            if (game === "Bus Simulator Kerala") showPage("page16");
+        });
+    });
+
+    document.querySelectorAll('#page6 .indonesia-card').forEach(function (card, index) {
+        card.addEventListener('click', function () {
+            showPage(String(7 + index).replace(/^/, "page"));
+        });
+    });
+
+    document.querySelectorAll('.category-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            showPage("page" + card.dataset.targetPage);
+        });
+    });
+
+    document.querySelectorAll('[data-back]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            const targetPage = button.getAttribute("data-back");
+            showPage(targetPage);
+        });
+    });
+})();</script>
+<script>
+// PAGE 4 UPLOAD NAVIGATION
+document.addEventListener("click", function(event) {
+    const button = event.target.closest("#uploadButton");
+    if (button) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        document.getElementById("page3").style.display = "none";
+        document.getElementById("page4").style.display = "block";
+    }
+}, true);
+
+document.getElementById("backHome").addEventListener("click", function() {
+    document.getElementById("page4").style.display = "none";
+    document.getElementById("page3").style.display = "block";
+});
+</script>
+<script>
+// AUTO_APPROVED_MODS_SYSTEM
+(function () {
+    const API_URL = "https://script.google.com/macros/s/AKfycbw5e51Ab7BUm8sJ8GKX31xjojLAf1XPWoVVSzrN3ygRY4htUCm81eZI6Ffx-u53GXcZ3w/exec";
+
+    const pageMap = {
+        "Bus Simulator Indonesia": {
+            "Vehicle Mods": "page7",
+            "Bus Liveries": "page8",
+            "Horns": "page9",
+            "Maps": "page10"
+        },
+        "Bus Simulator India": {
+            "Vehicle Mods": "page12",
+            "Bus Liveries": "page13",
+            "Horns": "page14",
+            "Maps": "page15"
+        },
+        "Bus Simulator Kerala": {
+            "Vehicle Mods": "page17",
+            "Bus Liveries": "page18",
+            "Horns": "page19",
+            "Maps": "page20"
+        }
+    };
+
+    function safeUrl(value) {
+        try {
+            const url = new URL(value);
+            return url.protocol === "https:" ? url.href : "";
+        } catch {
+            return "";
+        }
+    }
+
+    function createCard(mod) {
+        const card = document.createElement("div");
+        card.className = "mod-card";
+        card.dataset.autoMod = "true";
+
+        const photoUrl = safeUrl(mod["MOD PHOTO LINK"]);
+        if (photoUrl) {
+            const img = document.createElement("img");
+            img.src = photoUrl;
+            img.alt = mod["MOD NAME"] || "Mod photo";
+            img.loading = "lazy";
+            img.onerror = function () {
+                const link = document.createElement("a");
+                link.href = photoUrl;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.textContent = "VIEW PHOTO";
+                img.replaceWith(link);
+            };
+            card.appendChild(img);
+        }
+
+        const info = document.createElement("div");
+        info.className = "mod-card-info";
+
+        const heading = document.createElement("h3");
+        heading.textContent = mod["MOD NAME"] || "Untitled Mod";
+        info.appendChild(heading);
+
+        const description = document.createElement("p");
+        description.textContent = mod["MOD DESCRIPTION"] || "";
+        info.appendChild(description);
+
+        if (mod["UPLOADER NAME"]) {
+            const uploader = document.createElement("p");
+            uploader.textContent = "Uploaded by: " + mod["UPLOADER NAME"];
+            info.appendChild(uploader);
+        }
+
+        const downloadUrl = safeUrl(mod["SHAREMODS DOWNLOAD LINK"]);
+        if (downloadUrl) {
+            const button = document.createElement("a");
+            button.className = "mod-download";
+            button.href = downloadUrl;
+            button.target = "_blank";
+            button.rel = "noopener noreferrer";
+            button.textContent = "DOWNLOAD MOD";
+            info.appendChild(button);
+        }
+
+        card.appendChild(info);
+        return card;
+    }
+
+    function renderMods(mods) {
+        document.querySelectorAll(".mod-list").forEach(function (list) {
+            list.querySelectorAll('[data-auto-mod="true"]').forEach(function (card) {
+                card.remove();
+            });
+        });
+
+        document.querySelectorAll(".mod-empty").forEach(function (empty) {
+            empty.style.display = "block";
+        });
+
+        mods.forEach(function (mod) {
+            const game = (mod["SELECT GAME"] || "").trim();
+            const category = (mod["SELECT CATEGORY"] || "").trim();
+            const pageId = pageMap[game] && pageMap[game][category];
+            if (!pageId) return;
+
+            const page = document.getElementById(pageId);
+            const list = page && page.querySelector(".mod-list");
+            if (!list) return;
+
+            const empty = list.querySelector(".mod-empty");
+            if (empty) empty.style.display = "none";
+
+            list.appendChild(createCard(mod));
+        });
+    }
+
+    window.receiveApprovedMods = function (mods) {
+        if (Array.isArray(mods)) renderMods(mods);
+    };
+
+    function loadMods() {
+        const oldScript = document.getElementById("approved-mods-jsonp");
+        if (oldScript) oldScript.remove();
+
+        const script = document.createElement("script");
+        script.id = "approved-mods-jsonp";
+        script.src = API_URL + "?callback=receiveApprovedMods&_=" + Date.now();
+        script.onerror = function () {
+            console.warn("Could not load approved mods.");
+        };
+        document.body.appendChild(script);
+    }
+
+    loadMods();
+    setInterval(loadMods, 30000);
+})();
+</script>
+<script>
+// ROMAN DS HOME GAME CARDS AND LATEST APPROVED MODS
+(function () {
+    document.querySelectorAll("[data-home-game]").forEach(function (card) {
+        card.addEventListener("click", function () {
+            const targets = {
+                indonesia: "page6",
+                india: "page11",
+                kerala: "page16"
+            };
+            const targetId = targets[card.dataset.homeGame];
+            document.querySelectorAll(
+                "#page3,#page5,#page6,#page11,#page16,#page7,#page8,#page9,#page10,#page12,#page13,#page14,#page15,#page17,#page18,#page19,#page20"
+            ).forEach(function (page) {
+                page.style.display = "none";
+            });
+            const target = document.getElementById(targetId);
+            if (target) target.style.display = "block";
+        });
+    });
+
+    function safeHttps(value) {
+        try {
+            const url = new URL(value);
+            return url.protocol === "https:" ? url.href : "";
+        } catch (error) {
+            return "";
+        }
+    }
+
+    function renderLatest(mods) {
+        const container = document.getElementById("homeLatestMods");
+        if (!container) return;
+
+        container.replaceChildren();
+
+        const latest = mods.slice(-3).reverse();
+        if (!latest.length) {
+            const empty = document.createElement("div");
+            empty.className = "rd-latest-empty";
+            empty.textContent = "No approved mods yet. Check back soon!";
+            container.appendChild(empty);
+            return;
+        }
+
+        latest.forEach(function (mod) {
+            const card = document.createElement("article");
+            card.className = "rd-latest-card";
+
+            const photo = safeHttps(mod["MOD PHOTO LINK"]);
+            if (photo) {
+                const img = document.createElement("img");
+                img.src = photo;
+                img.alt = mod["MOD NAME"] || "Mod photo";
+                img.loading = "lazy";
+                img.onerror = function () { img.remove(); };
+                card.appendChild(img);
+            }
+
+            const info = document.createElement("div");
+            info.className = "rd-latest-info";
+
+            const name = document.createElement("strong");
+            name.textContent = mod["MOD NAME"] || "Untitled Mod";
+            info.appendChild(name);
+
+            const description = document.createElement("p");
+            description.textContent = mod["MOD DESCRIPTION"] || "Approved mod";
+            info.appendChild(description);
+
+            const meta = document.createElement("small");
+            meta.textContent = (mod["SELECT GAME"] || "") + " • " + (mod["SELECT CATEGORY"] || "");
+            info.appendChild(meta);
+
+            const link = safeHttps(mod["SHAREMODS DOWNLOAD LINK"]);
+            if (link) {
+                const button = document.createElement("a");
+                button.className = "rd-latest-download";
+                button.href = link;
+                button.target = "_blank";
+                button.rel = "noopener noreferrer";
+                button.textContent = "DOWNLOAD";
+                info.appendChild(button);
+            }
+
+            card.appendChild(info);
+            container.appendChild(card);
+        });
+    }
+
+    const previousCallback = window.receiveApprovedMods;
+    window.receiveApprovedMods = function (mods) {
+        if (typeof previousCallback === "function") {
+            previousCallback(mods);
+        }
+        if (Array.isArray(mods)) renderLatest(mods);
+    };
+})();
+</script>
+<!-- ROMAN_DS_TWO_STAGE_PROMO -->
+<style>
+#rdPromoOverlay {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:rgba(0,0,0,.72);
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+#rdPromoBox {
+  position:relative;
+  width:min(92vw,520px);
+  max-height:85vh;
+  background:#fff8df;
+  border:3px solid #26351B;
+  border-radius:18px;
+  padding:8px;
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+}
+#rdPromoBox a {
+  display:block;
+  line-height:0;
+}
+#rdPromoBox img {
+  display:block;
+  width:100%;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:12px;
+}
+#rdPromoClose {
+  position:absolute;
+  top:-13px;
+  right:-13px;
+  width:36px;
+  height:36px;
+  border:2px solid white;
+  border-radius:50%;
+  background:#26351B;
+  color:white;
+  font-size:23px;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:2;
+  box-shadow:0 3px 10px #0005;
+}
+
+/* ROMAN DS - PAGE 5 LIGHT GAMING REDESIGN */
+#page5 {
+    background: #F4F1DE;
+    color: #26351B;
+    min-height: 100vh;
+    padding: 22px 12px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#page5 h1 {
+    color: #26351B;
+    font-size: clamp(20px, 4vw, 30px);
+    font-weight: 900;
+    margin: 8px 0 22px;
+}
+
+#page5 .game-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#page5 .game-card {
+    min-width: 0;
+    padding: 7px;
+    border: 1px solid #D6D9C1;
+    border-radius: 13px;
+    background: #FFFFFF;
+    color: #26351B;
+    box-shadow: 0 3px 10px rgba(38,53,27,0.09);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+#page5 .game-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+#page5 .game-card span {
+    font-size: clamp(9px, 2.5vw, 13px);
+    line-height: 1.3;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+#page5 #selectedGame {
+    color: #52633A;
+    font-size: 13px;
+    margin: 18px 0 12px;
+}
+
+#page5 .back-home {
+    background: #526B35;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 22px;
+    font-weight: 800;
+}
+
+@media (max-width: 380px) {
+    #page5 .game-cards {
+        gap: 6px;
+    }
+
+    #page5 .game-card {
+        padding: 5px;
+        border-radius: 9px;
+    }
+
+    #page5 .game-card span {
+        font-size: 9px;
+    }
+}
+
+/* PAGE 5 - HEADING AND COMING SOON */
+#page5 .rd-page5-heading {
+    font-family: "Arial Black", Arial, sans-serif;
+    font-size: clamp(21px, 4vw, 32px);
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #26351B;
+    text-shadow: 1px 2px 0 #D6D9C1;
+}
+
+#page5 .rd-coming-soon-list {
+    width: 100%;
+    max-width: 900px;
+    margin: 18px auto 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+#page5 .rd-coming-soon {
+    width: 100%;
+    min-height: 76px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #89966B;
+    border-radius: 13px;
+    background: #E8EBD8;
+    color: #526B35;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+/* ROMAN DS - PAGE 6 PREMIUM EMERALD DESIGN */
+#page6 {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 30px 16px 25px;
+    overflow: hidden;
+    color: #ffffff;
+    background:
+        radial-gradient(ellipse at 15% 10%, rgba(0,255,170,.22), transparent 38%),
+        radial-gradient(ellipse at 90% 85%, rgba(218,180,75,.16), transparent 40%),
+        linear-gradient(145deg, #061b17, #073c30 48%, #03110f);
+}
+
+#page6::before,
+#page6::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border: 1px solid rgba(208,174,82,.2);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+#page6::before {
+    width: 290px;
+    height: 290px;
+    top: -150px;
+    right: -100px;
+    box-shadow: 0 0 70px rgba(0,255,170,.12);
+}
+
+#page6::after {
+    width: 230px;
+    height: 230px;
+    bottom: -120px;
+    left: -100px;
+}
+
+#page6 h1 {
+    max-width: 700px;
+    margin: 10px auto 28px;
+    text-align: center;
+    font-family: "Arial Black", Arial, sans-serif;
+    font-size: clamp(22px, 5vw, 38px);
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+    color: #f3d783;
+    text-shadow: 0 0 18px rgba(243,215,131,.25);
+}
+
+#page6 .indonesia-card {
+    position: relative;
+    min-width: 0;
+    padding: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(231,199,111,.55);
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(19,75,59,.96), rgba(4,28,23,.98));
+    color: #ffffff;
+    box-shadow: 0 7px 22px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+#page6 .indonesia-card:active {
+    transform: scale(.96);
+    border-color: #f3d783;
+    box-shadow: 0 0 22px rgba(243,215,131,.28);
+}
+
+#page6 .indonesia-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: block;
+    object-fit: cover;
+    border-radius: 11px;
+    border: 1px solid rgba(255,255,255,.13);
+}
+
+#page6 .indonesia-card span {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: clamp(10px, 2.6vw, 14px);
+    line-height: 1.25;
+    font-weight: 900;
+    letter-spacing: .4px;
+    color: #f5e6b4;
+    overflow-wrap: anywhere;
+}
+
+#page6 #page6Back {
+    display: block;
+    margin: 28px auto 5px;
+    padding: 12px 28px;
+    border: 1px solid #e5c36e;
+    border-radius: 30px;
+    background: linear-gradient(100deg, #b38a35, #e4c875);
+    color: #10251d;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    #page6 {
+        padding: 22px 12px;
+    }
+
+    #page6 .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    #page6 .indonesia-card {
+        border-radius: 14px;
+        padding: 7px;
+    }
+}
+
+/* PAGE 6 - FORCE TWO BOXES PER ROW */
+#page6 .category-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 13px !important;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+#page6 .indonesia-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ROMAN DS - THREE GAME CATEGORY THEMES */
+
+/* COMMON 2 x 2 LAYOUT */
+#page6 .indonesia-cards,
+#page11 .category-grid,
+#page16 .category-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    width: 100%;
+    max-width: 620px;
+    margin: 25px auto !important;
+}
+
+/* INDONESIA - EMERALD AND GOLD */
+#page6 .indonesia-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid #D6AD45;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #105B43, #062C25);
+    color: #FFE7A0;
+    box-shadow: 0 7px 18px rgba(0,0,0,.3);
+}
+#page6 .indonesia-card span {
+    color: #FFE7A0;
+    font-weight: 900;
+}
+
+/* INDIA - GOLDEN YELLOW */
+#page11 {
+    background: linear-gradient(145deg, #FFF2B2, #E9AE27, #9B6410) !important;
+    color: #49300A !important;
+}
+#page11 h1 {
+    color: #704600 !important;
+    text-shadow: 1px 2px 2px rgba(255,255,255,.6);
+}
+#page11 .category-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid #FFD45C;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #FFF8D9, #E8B83E);
+    color: #573700;
+    box-shadow: 0 7px 18px rgba(85,51,0,.25);
+}
+#page11 .category-card span {
+    color: #573700;
+    font-weight: 900;
+}
+
+/* KERALA - RUBY RED */
+#page16 {
+    background: linear-gradient(145deg, #650D20, #B51F36, #350713) !important;
+    color: #FFF0D5 !important;
+}
+#page16 h1 {
+    color: #FFE0A0 !important;
+    text-shadow: 1px 2px 3px rgba(0,0,0,.4);
+}
+#page16 .category-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid #E9B85B;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #A91D36, #510B1B);
+    color: #FFE8B0;
+    box-shadow: 0 7px 18px rgba(0,0,0,.3);
+}
+#page16 .category-card span {
+    color: #FFE8B0;
+    font-weight: 900;
+}
+
+/* ALL THREE PAGES - IMAGE AND BUTTON DETAILS */
+#page6 .indonesia-card img,
+#page11 .category-card img,
+#page16 .category-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+}
+#page11 .page-back,
+#page16 .page-back {
+    border-radius: 25px;
+    font-weight: 900;
+}
+
+/* PAGE 2 - DARK ORANGE LOADING DESIGN */
+#page2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #A8430B !important;
+    color: white;
+}
+
+#page2 .rd-page2-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    font-size: clamp(30px, 5vw, 58px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 2px 3px 5px rgba(0,0,0,.3);
+}
+
+#page2 .rd-loading-ui {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+#page2 .rd-loading-track {
+    position: relative;
+    flex: 1;
+    height: 15px;
+    background: transparent;
+    border: 2px solid #111111;
+    border-radius: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#page2 .rd-loading-fill {
+    width: 0%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 0;
+    transition: width .04s linear;
+}
+
+#page2 .rd-loading-percent {
+    min-width: 48px;
+    margin: 0;
+    color: #111111;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: left;
+}
+
+#page2 .rd-loading-total {
+    color: #111111;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+/* PAGE 2 - FINAL ORANGE GRADIENT GLOW DESIGN */
+#page2 {
+    background: linear-gradient(135deg, #5B2108 0%, #A8430B 48%, #D66A1B 100%) !important;
+}
+
+#page2 .rd-page2-title {
+    color: #FFFFFF !important;
+    font-size: clamp(30px, 5vw, 58px) !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px;
+    text-shadow:
+        0 0 7px rgba(255,255,255,.65),
+        0 0 17px rgba(255,220,170,.5),
+        0 3px 8px rgba(0,0,0,.35) !important;
+}
+
+#page2 .rd-loading-ui {
+    left: 6% !important;
+    right: 6% !important;
+    bottom: 42px !important;
+    gap: 12px !important;
+}
+
+#page2 .rd-loading-track {
+    height: 13px !important;
+    border: 2px solid #111111 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+#page2 .rd-loading-fill {
+    background: #FFFFFF !important;
+    border-radius: 0 !important;
+}
+
+#page2 .rd-loading-percent,
+#page2 .rd-loading-total {
+    color: #111111 !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+}
+
+/* ROMAN DS - PAGE-AWARE BOTTOM AD BANNER */
+#rd-bottom-ad-layer {
+  display: none;
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  width: calc(100% - 20px);
+  height: 100px;
+  box-sizing: border-box;
+  z-index: 99999;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.35);
+  line-height: 0;
+}
+#rd-bottom-ad-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 9px;
+  background: transparent;
+}
+#rd-bottom-ad-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  transition: opacity 1.2s ease-in-out;
+}
+#rd-bottom-ad-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 14px;
+  margin: 0;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(0,0,0,.28);
+  line-height: 1;
+  pointer-events: none;
+}
+.rd-bottom-ad-dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  border: 0;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  background: rgba(255,255,255,.65);
+}
+.rd-bottom-ad-dot.is-active {
+  width: 9px;
+  height: 9px;
+  min-width: 9px;
+  background: #ffffff;
+  box-shadow: 0 0 4px rgba(0,0,0,.55);
+}
+.rd-ad-space {
+  padding-bottom: 120px !important;
+}
+
+/* PAGE 3 ROMAN DS LOGO */
+.rd-brand-logo {
+  display: block;
+  width: 155px;
+  height: 52px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 8px;
+}
+</style>
+
+<script>
+(function () {
+  const ads = [
+    {
+      image: "assets/desighn/websitead.jpeg",
+      url: "https://roman-ds.vercel.app"
+    },
+    {
+      image: "assets/desighn/instagramad.jpeg",
+      url: "https://www.instagram.com/roman_development_studio?srtk=N3IzMGhncWNwNTlq"
+    }
+  ];
+
+  const pageIds = [];
+  for (let i = 3; i <= 20; i++) pageIds.push("page" + i);
+
+  const layer = document.createElement("div");
+  layer.id = "rd-bottom-ad-layer";
+  layer.setAttribute("aria-label", "Advertisements");
+
+  const link = document.createElement("a");
+  link.id = "rd-bottom-ad-link";
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+
+  const image = document.createElement("img");
+  image.id = "rd-bottom-ad-image";
+  image.alt = "Advertisement";
+  image.src = ads[0].image;
+  link.href = ads[0].url;
+  link.appendChild(image);
+
+  const dots = document.createElement("div");
+  dots.id = "rd-bottom-ad-dots";
+
+  let current = 0;
+  const dotElements = [];
+
+  for (let i = 0; i < 4; i++) {
+    const dot = document.createElement("span");
+    dot.className = "rd-bottom-ad-dot" + (i === 0 ? " is-active" : "");
+    dots.appendChild(dot);
+    dotElements.push(dot);
+  }
+
+  layer.appendChild(link);
+  layer.appendChild(dots);
+  document.body.appendChild(layer);
+
+  function updatePageAd() {
+    let pageIsActive = false;
+
+    pageIds.forEach(function (id) {
+      const page = document.getElementById(id);
+      if (!page) return;
+
+      const visible = window.getComputedStyle(page).display !== "none";
+      page.classList.toggle("rd-ad-space", visible);
+
+      if (visible) pageIsActive = true;
+    });
+
+    const nextDisplay = pageIsActive ? "block" : "none";
+    if (layer.style.display !== nextDisplay) {
+      layer.style.display = nextDisplay;
+    }
+  }
+
+  function showNextAd() {
+    current = (current + 1) % 4;
+    const selectedAd = ads[current % ads.length];
+
+    image.style.opacity = "0";
+
+    window.setTimeout(function () {
+      image.src = selectedAd.image;
+      link.href = selectedAd.url;
+
+      dotElements.forEach(function (dot, index) {
+        dot.classList.toggle("is-active", index === current);
+      });
+
+      window.requestAnimationFrame(function () {
+        image.style.opacity = "1";
+      });
+    }, 650);
+  }
+
+  const observer = new MutationObserver(updatePageAd);
+  observer.observe(document.body, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["style", "class"]
+  });
+
+  updatePageAd();
+  window.setInterval(showNextAd, 30000);
+})();
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
