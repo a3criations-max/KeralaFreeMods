@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -857,23 +857,23 @@ body{
    <div class="rd-brand">
     <img class="rd-brand-logo" src="assets/desighn/romanlogo.jpeg" alt="Roman DS Logo">
    </div>
-   <span class="rd-status">● MOD HUB</span>
+   <span class="rd-status">â— MOD HUB</span>
   </header>
 
   <section class="rd-welcome">
    <span class="rd-eyebrow">WELCOME TO YOUR GAMING ZONE</span>
    <h1>BUS SIMULATOR<br><span>MOD HUB</span></h1>
    <p>Discover new mods. Share your creations. Enjoy the ride.</p>
-   <div class="rd-welcome-decoration">🎮</div>
+   <div class="rd-welcome-decoration">ðŸŽ®</div>
   </section>
 
   <section class="rd-actions">
    <button id="uploadButton" class="rd-action rd-upload" type="button">
-    <span class="rd-action-icon">⬆</span>
+    <span class="rd-action-icon">â¬†</span>
     <span><strong>UPLOAD MODS</strong><small>Share your creation</small></span>
    </button>
    <button id="downloadButton" class="rd-action rd-download" type="button">
-    <span class="rd-action-icon">⬇</span>
+    <span class="rd-action-icon">â¬‡</span>
     <span><strong>DOWNLOAD MODS</strong><small>Explore new mods</small></span>
    </button>
   </section>
@@ -881,7 +881,7 @@ body{
   <section class="rd-section">
    <div class="rd-section-heading">
     <div><span>EXPLORE</span><h2>CHOOSE YOUR GAME</h2></div>
-    <span class="rd-section-symbol">🎮</span>
+    <span class="rd-section-symbol">ðŸŽ®</span>
    </div>
    <div class="rd-home-games">
     <button class="rd-game-card" type="button" data-home-game="indonesia">
@@ -902,7 +902,7 @@ body{
   <section class="rd-section rd-latest-section">
    <div class="rd-section-heading">
     <div><span>FRESH FROM THE COMMUNITY</span><h2>LATEST MODS</h2></div>
-    <span class="rd-live-label">● LIVE</span>
+    <span class="rd-live-label">â— LIVE</span>
    </div>
    <div id="homeLatestMods" class="rd-latest-list">
     <div class="rd-latest-empty">Approved mods will appear here automatically.</div>
@@ -951,7 +951,7 @@ body{
  <div class="upload-container">
 
   <button class="back-home" id="backHome" type="button">
-   ← BACK TO HOME
+   â† BACK TO HOME
   </button>
 
   <h1 class="upload-heading">SHARE YOUR MOD</h1>
@@ -1557,7 +1557,7 @@ document.getElementById("backHome").addEventListener("click", function() {
         info.appendChild(heading);
 
         const description = document.createElement("p");
-        description.textContent = mod["MOD DESCRIPTION"] || "";
+        description.textContent = mod["MOD DETAILS"] || "";
         info.appendChild(description);
 
         if (mod["UPLOADER NAME"]) {
@@ -1566,7 +1566,7 @@ document.getElementById("backHome").addEventListener("click", function() {
             info.appendChild(uploader);
         }
 
-        const downloadUrl = safeUrl(mod["SHAREMODS DOWNLOAD LINK"]);
+        const downloadUrl = safeUrl(mod["DOWNLOAD LINK"]);
         if (downloadUrl) {
             const button = document.createElement("a");
             button.className = "mod-download";
@@ -1593,8 +1593,26 @@ document.getElementById("backHome").addEventListener("click", function() {
         });
 
         mods.forEach(function (mod) {
-            const game = (mod["SELECT GAME"] || "").trim();
-            const category = (mod["SELECT CATEGORY"] || "").trim();
+            const rawGame = (mod["GAME"] || "").trim().toLowerCase();
+            const rawCategory = (mod["CATEGORY"] || "").trim().toLowerCase();
+
+            const gameAliases = {
+                "bus simulator indonesia": "Bus Simulator Indonesia",
+                "bus simulator indonasia": "Bus Simulator Indonesia",
+                "bus simulator india": "Bus Simulator India",
+                "bus simulator kerala": "Bus Simulator Kerala"
+            };
+
+            const categoryAliases = {
+                "vehicle mods": "Vehicle Mods",
+                "livery mods": "Bus Liveries",
+                "bus liveries": "Bus Liveries",
+                "horns": "Horns",
+                "maps": "Maps"
+            };
+
+            const game = gameAliases[rawGame] || "";
+            const category = categoryAliases[rawCategory] || "";
             const pageId = pageMap[game] && pageMap[game][category];
             if (!pageId) return;
 
@@ -1697,14 +1715,14 @@ document.getElementById("backHome").addEventListener("click", function() {
             info.appendChild(name);
 
             const description = document.createElement("p");
-            description.textContent = mod["MOD DESCRIPTION"] || "Approved mod";
+            description.textContent = mod["MOD DETAILS"] || "Approved mod";
             info.appendChild(description);
 
             const meta = document.createElement("small");
-            meta.textContent = (mod["SELECT GAME"] || "") + " • " + (mod["SELECT CATEGORY"] || "");
+            meta.textContent = (mod["GAME"] || "") + " â€¢ " + (mod["CATEGORY"] || "");
             info.appendChild(meta);
 
-            const link = safeHttps(mod["SHAREMODS DOWNLOAD LINK"]);
+            const link = safeHttps(mod["DOWNLOAD LINK"]);
             if (link) {
                 const button = document.createElement("a");
                 button.className = "rd-latest-download";
@@ -2448,6 +2466,8 @@ document.getElementById("backHome").addEventListener("click", function() {
 })();
 </script>
 </html>
+
+
 
 
 
