@@ -1,70 +1,3 @@
-﻿<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const API_URL = "https://script.google.com/macros/s/AKfycbxgM1r5V4i6bn7PueQy5x8uho9u8SFnw5pRZUQ7ElrpHd6US2LwMDtNjIcMaeBu3QYc3A/exec";
-    const form = document.getElementById("uploadForm");
-    if (!form) return;
-
-    form.addEventListener("submit", function (event) {
-        if (document.getElementById("uploadType").value !== "link") return;
-
-        event.preventDefault();
-
-        const status = document.getElementById("uploadStatus");
-        const button = form.querySelector('[type="submit"]');
-        const downloadLink = document.getElementById("downloadLink").value.trim();
-
-        if (!/^https:\/\/\S+$/i.test(downloadLink)) {
-            status.textContent = "Please enter a valid HTTPS download link.";
-            return;
-        }
-
-        const fields = {
-            game: document.getElementById("game").value,
-            category: document.getElementById("category").value,
-            modName: document.getElementById("modName").value.trim(),
-            description: document.getElementById("description").value.trim(),
-            uploader: document.getElementById("uploader").value.trim(),
-            downloadLink: downloadLink
-        };
-
-        const frameName = "romanDSSubmitFrame";
-        let frame = document.getElementById(frameName);
-
-        if (!frame) {
-            frame = document.createElement("iframe");
-            frame.id = frameName;
-            frame.name = frameName;
-            frame.style.display = "none";
-            document.body.appendChild(frame);
-        }
-
-        const postForm = document.createElement("form");
-        postForm.method = "POST";
-        postForm.action = API_URL;
-        postForm.target = frameName;
-        postForm.style.display = "none";
-
-        Object.keys(fields).forEach(function (key) {
-            const input = document.createElement("input");
-            input.type = "hidden";
-            input.name = key;
-            input.value = fields[key];
-            postForm.appendChild(input);
-        });
-
-        document.body.appendChild(postForm);
-        button.disabled = true;
-        status.textContent = "Submitting your mod...";
-        postForm.submit();
-
-        setTimeout(function () {
-            status.textContent = "Request sent. Please check the Google Sheet.";
-            button.disabled = false;
-            postForm.remove();
-        }, 3000);
-    });
-});
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -822,257 +755,6 @@ body{
   border-radius: 8px;
 }
 </style>
-
-<style id="rd-mod-pages-redesign-v1">
-/* ROMAN DS Ã¢â‚¬â€ MOD LIST PAGES PREMIUM WHITE REDESIGN */
-.mod-list-page {
-  --rd-accent: #087653;
-  --rd-accent-dark: #07563e;
-  --rd-soft: #eaf5ef;
-  --rd-highlight: #d8b45a;
-  display: none;
-  background: #f7f9f7 !important;
-  color: #18251f !important;
-  padding: 26px 16px 145px !important;
-  text-align: left !important;
-  isolation: isolate;
-}
-
-/* Country identities Ã¢â‚¬â€ all pages remain white */
-#page7,#page8,#page9,#page10 {
-  --rd-accent: #087653;
-  --rd-accent-dark: #064b38;
-  --rd-soft: #e8f4ed;
-  --rd-highlight: #d6b45d;
-}
-#page12,#page13,#page14,#page15 {
-  --rd-accent: #d66b19;
-  --rd-accent-dark: #28539a;
-  --rd-soft: #fff1e3;
-  --rd-highlight: #28539a;
-}
-#page17,#page18,#page19,#page20 {
-  --rd-accent: #087f78;
-  --rd-accent-dark: #075d59;
-  --rd-soft: #e4f4f1;
-  --rd-highlight: #d35a4a;
-}
-
-.mod-list-page h1 {
-  position: relative;
-  width: min(100%, 1120px);
-  margin: 4px auto 25px !important;
-  padding: 18px 20px 19px 23px;
-  border: 1px solid #e6ebe7;
-  border-left: 6px solid var(--rd-accent);
-  border-radius: 17px;
-  background: linear-gradient(110deg, #ffffff 0%, var(--rd-soft) 100%);
-  color: #17251e !important;
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: clamp(17px, 3.8vw, 27px) !important;
-  font-weight: 900;
-  line-height: 1.25;
-  letter-spacing: .25px;
-  text-align: left;
-  box-shadow: 0 7px 22px rgba(24,55,39,.055);
-}
-.mod-list-page h1::before {
-  content: 'ROMAN DS  /  MOD COLLECTION';
-  display: block;
-  margin-bottom: 7px;
-  color: var(--rd-accent);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 1.8px;
-}
-.mod-list {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
-  gap: 17px !important;
-  width: min(100%, 1120px) !important;
-  margin: 0 auto !important;
-}
-.mod-card {
-  position: relative;
-  display: flex !important;
-  align-items: center;
-  min-width: 0;
-  gap: 14px !important;
-  padding: 13px !important;
-  overflow: hidden;
-  border: 1px solid #e5ebe6;
-  border-top: 3px solid var(--rd-accent);
-  border-radius: 17px !important;
-  background: #ffffff !important;
-  color: #1c2b23 !important;
-  box-shadow: 0 7px 22px rgba(20,48,32,.065);
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.mod-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 27px rgba(20,48,32,.11);
-}
-.mod-card img {
-  display: block;
-  width: 124px !important;
-  height: 124px !important;
-  flex: 0 0 124px;
-  object-fit: cover;
-  border: 1px solid #e8eee9;
-  border-radius: 12px !important;
-  background: #f0f3f0;
-}
-.mod-card-info { min-width: 0; flex: 1; }
-.mod-card-info h3 {
-  margin: 0 0 8px !important;
-  color: #1b2b22;
-  font-size: 15px;
-  font-weight: 900;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
-}
-.mod-card-info p {
-  margin: 0 0 8px !important;
-  color: #657168 !important;
-  font-size: 11px !important;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-}
-.mod-card-info p:last-of-type { color: var(--rd-accent-dark) !important; font-weight: 700; }
-.mod-download {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  min-height: 35px;
-  margin-top: 3px;
-  padding: 9px 14px !important;
-  border: 0;
-  border-radius: 9px !important;
-  background: var(--rd-accent) !important;
-  color: #ffffff !important;
-  font-size: 10px !important;
-  font-weight: 900;
-  letter-spacing: .45px;
-  text-decoration: none;
-}
-.mod-download:hover { background: var(--rd-accent-dark) !important; }
-.mod-empty {
-  grid-column: 1 / -1;
-  width: 100% !important;
-  max-width: none !important;
-  padding: 36px 20px !important;
-  border: 1px dashed #cbd8ce;
-  border-radius: 17px !important;
-  background: #ffffff !important;
-  color: #657168 !important;
-  text-align: center;
-  box-shadow: 0 7px 22px rgba(20,48,32,.04);
-}
-.mod-empty strong { display: block; margin-bottom: 8px; color: var(--rd-accent-dark); font-size: 14px; }
-.mod-empty p { font-size: 12px; line-height: 1.6; }
-.mod-list-page .page-back {
-  display: block;
-  width: min(100%, 220px);
-  margin: 27px auto 5px !important;
-  padding: 12px 20px !important;
-  border: 0;
-  border-radius: 30px !important;
-  background: #1e3027 !important;
-  color: #ffffff !important;
-  font-weight: 900;
-  letter-spacing: .6px;
-}
-
-/* BUS LIVERIES Ã¢â‚¬â€ large landscape artwork cards */
-#page8 .mod-card,#page13 .mod-card,#page18 .mod-card {
-  display: flex !important;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0 !important;
-  padding: 0 !important;
-  border-top: 0;
-  border-radius: 18px !important;
-}
-#page8 .mod-card::before,#page13 .mod-card::before,#page18 .mod-card::before {
-  content: 'LIVERY SHOWCASE';
-  order: 0;
-  padding: 9px 13px;
-  background: var(--rd-soft);
-  color: var(--rd-accent-dark);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-}
-#page8 .mod-card img,#page13 .mod-card img,#page18 .mod-card img {
-  order: 1;
-  width: 100% !important;
-  height: 190px !important;
-  flex: none;
-  border: 0;
-  border-radius: 0 !important;
-  object-fit: cover;
-}
-#page8 .mod-card-info,#page13 .mod-card-info,#page18 .mod-card-info { order: 2; padding: 15px; }
-
-/* HORNS Ã¢â‚¬â€ compact audio-style listing (download links remain unchanged) */
-#page9 .mod-card,#page14 .mod-card,#page19 .mod-card {
-  min-height: 118px;
-  border-top: 0;
-  border-left: 5px solid var(--rd-highlight);
-  background: linear-gradient(105deg, #ffffff, var(--rd-soft)) !important;
-}
-#page9 .mod-card::before,#page14 .mod-card::before,#page19 .mod-card::before {
-  content: 'Ã¢â„¢Â«';
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
-  border-radius: 50%;
-  background: var(--rd-accent);
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 900;
-}
-#page9 .mod-card img,#page14 .mod-card img,#page19 .mod-card img { width: 76px !important; height: 76px !important; flex-basis: 76px; }
-
-/* MAPS Ã¢â‚¬â€ wide map preview cards */
-#page10 .mod-card,#page15 .mod-card,#page20 .mod-card {
-  display: flex !important;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0 !important;
-  padding: 0 !important;
-  border-top: 0;
-}
-#page10 .mod-card img,#page15 .mod-card img,#page20 .mod-card img {
-  width: 100% !important;
-  height: 170px !important;
-  flex: none;
-  border: 0;
-  border-radius: 0 !important;
-}
-#page10 .mod-card-info,#page15 .mod-card-info,#page20 .mod-card-info { padding: 14px; }
-
-@media (max-width: 680px) {
-  .mod-list-page { padding: 18px 12px 145px !important; }
-  .mod-list-page h1 { margin-bottom: 17px !important; padding: 15px 14px 15px 17px; }
-  .mod-list { grid-template-columns: 1fr; gap: 12px !important; }
-  .mod-card { gap: 11px !important; padding: 10px !important; border-radius: 14px !important; }
-  .mod-card img { width: 104px !important; height: 104px !important; flex-basis: 104px; }
-  .mod-card-info h3 { font-size: 13px; }
-  #page8 .mod-card img,#page13 .mod-card img,#page18 .mod-card img { height: 175px !important; }
-  #page10 .mod-card img,#page15 .mod-card img,#page20 .mod-card img { height: 155px !important; }
-  #page9 .mod-card::before,#page14 .mod-card::before,#page19 .mod-card::before { width: 35px; height: 35px; flex-basis: 35px; }
-  #page9 .mod-card img,#page14 .mod-card img,#page19 .mod-card img { width: 65px !important; height: 65px !important; flex-basis: 65px; }
-}
-@media (max-width: 360px) {
-  .mod-card img { width: 86px !important; height: 86px !important; flex-basis: 86px; }
-  .mod-download { padding: 8px 10px !important; font-size: 9px !important; }
-}
-</style>
-
 </head>
 
 <body>
@@ -1175,23 +857,23 @@ body{
    <div class="rd-brand">
     <img class="rd-brand-logo" src="assets/desighn/romanlogo.jpeg" alt="Roman DS Logo">
    </div>
-   <span class="rd-status">Ã¢â€”Â MOD HUB</span>
+   <span class="rd-status">● MOD HUB</span>
   </header>
 
   <section class="rd-welcome">
    <span class="rd-eyebrow">WELCOME TO YOUR GAMING ZONE</span>
    <h1>BUS SIMULATOR<br><span>MOD HUB</span></h1>
    <p>Discover new mods. Share your creations. Enjoy the ride.</p>
-   <div class="rd-welcome-decoration">Ã°Å¸Å½Â®</div>
+   <div class="rd-welcome-decoration">🎮</div>
   </section>
 
   <section class="rd-actions">
    <button id="uploadButton" class="rd-action rd-upload" type="button">
-    <span class="rd-action-icon">Ã¢Â¬â€ </span>
+    <span class="rd-action-icon">⬆</span>
     <span><strong>UPLOAD MODS</strong><small>Share your creation</small></span>
    </button>
    <button id="downloadButton" class="rd-action rd-download" type="button">
-    <span class="rd-action-icon">Ã¢Â¬â€¡</span>
+    <span class="rd-action-icon">⬇</span>
     <span><strong>DOWNLOAD MODS</strong><small>Explore new mods</small></span>
    </button>
   </section>
@@ -1199,7 +881,7 @@ body{
   <section class="rd-section">
    <div class="rd-section-heading">
     <div><span>EXPLORE</span><h2>CHOOSE YOUR GAME</h2></div>
-    <span class="rd-section-symbol">Ã°Å¸Å½Â®</span>
+    <span class="rd-section-symbol">🎮</span>
    </div>
    <div class="rd-home-games">
     <button class="rd-game-card" type="button" data-home-game="indonesia">
@@ -1220,7 +902,7 @@ body{
   <section class="rd-section rd-latest-section">
    <div class="rd-section-heading">
     <div><span>FRESH FROM THE COMMUNITY</span><h2>LATEST MODS</h2></div>
-    <span class="rd-live-label">Ã¢â€”Â LIVE</span>
+    <span class="rd-live-label">● LIVE</span>
    </div>
    <div id="homeLatestMods" class="rd-latest-list">
     <div class="rd-latest-empty">Approved mods will appear here automatically.</div>
@@ -1269,7 +951,7 @@ body{
  <div class="upload-container">
 
   <button class="back-home" id="backHome" type="button">
-   Ã¢â€ Â BACK TO HOME
+   ← BACK TO HOME
   </button>
 
   <h1 class="upload-heading">SHARE YOUR MOD</h1>
@@ -1372,6 +1054,100 @@ this.value = "";
 </div>
 
 
+<script>
+// DOWNLOAD_LINK_AJAX_SUBMIT
+(function () {
+    const form = document.getElementById("uploadForm");
+    if (!form) return;
+
+    const status = document.getElementById("uploadStatus");
+    const button = form.querySelector('button[type="submit"]');
+    const endpoint = "https://script.google.com/macros/s/AKfycbxgM1r5V4i6bn7PueQy5x8uho9u8SFnw5pRZUQ7ElrpHd6US2LwMDtNjIcMaeBu3QYc3A/exec";
+
+    form.addEventListener("submit", function (event) {
+        if (document.getElementById("uploadType").value !== "link") return;
+
+        event.preventDefault();
+
+        if (!form.reportValidity()) return;
+
+        const link = document.getElementById("downloadLink").value.trim();
+
+        if (!/^https:\/\/\S+$/i.test(link)) {
+            status.textContent = "Please enter a valid HTTPS download link.";
+            return;
+        }
+
+        const frameName = "downloadSubmitFrame";
+        let frame = document.getElementById(frameName);
+
+        if (!frame) {
+            frame = document.createElement("iframe");
+            frame.name = frameName;
+            frame.id = frameName;
+            frame.style.display = "none";
+            document.body.appendChild(frame);
+        }
+
+        const marker = "KFM_DOWNLOAD_SUBMIT_RESULT";
+
+        const fields = {
+            game: document.getElementById("game").value,
+            category: document.getElementById("category").value,
+            modName: document.getElementById("modName").value.trim(),
+            description: document.getElementById("description").value.trim(),
+            uploader: document.getElementById("uploader").value.trim(),
+            downloadLink: link
+        };
+
+        const receiveResult = function (e) {
+            if (e.source !== frame.contentWindow || !e.data || e.data.marker !== marker) return;
+
+            window.removeEventListener("message", receiveResult);
+            clearTimeout(timeout);
+            button.disabled = false;
+
+            if (e.data.success) {
+                status.textContent = "Submitted successfully! Waiting for admin approval.";
+                form.reset();
+                document.getElementById("zipUploadFields").style.display = "none";
+                document.getElementById("linkUploadFields").style.display = "none";
+            } else {
+                status.textContent = "Submission failed: " + (e.data.message || "Please try again.");
+            }
+        };
+
+        window.addEventListener("message", receiveResult);
+
+        const timeout = setTimeout(function () {
+            window.removeEventListener("message", receiveResult);
+            button.disabled = false;
+            status.textContent = "No confirmation received. Check the Google Sheet before trying again.";
+        }, 30000);
+
+        button.disabled = true;
+        status.textContent = "Submitting...";
+
+        const postForm = document.createElement("form");
+        postForm.method = "POST";
+        postForm.action = endpoint;
+        postForm.target = frameName;
+        postForm.style.display = "none";
+
+        Object.keys(fields).forEach(function (key) {
+            const input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = fields[key];
+            postForm.appendChild(input);
+        });
+
+        document.body.appendChild(postForm);
+        postForm.submit();
+        postForm.remove();
+    });
+})();
+</script>
 <!-- PAGE 5: DOWNLOAD MODS -->
 <section id="page5">
     <h1 class="rd-page5-heading">SELECT YOUR GAME</h1>
@@ -1425,7 +1201,18 @@ document.querySelectorAll(".game-card").forEach(function (card) {
             "Selected: " + card.dataset.game;
     });
 });</script>
+<script>
+const downloadButton = document.getElementById("downloadButton");
+const page5 = document.getElementById("page5");
+const page3 = document.getElementById("page3");
 
+if (downloadButton && page5 && page3) {
+    downloadButton.onclick = function () {
+        page3.style.display = "none";
+        page5.style.display = "block";
+    };
+}
+</script>
 
 <!-- PAGE 6: BUS SIMULATOR INDONESIA -->
 <section id="page6">
@@ -1490,13 +1277,13 @@ document.querySelectorAll(".indonesia-card").forEach(function (card) {
         <button class="category-card" type="button" data-target-page="12">
             <img src="assets/indonesia/vehicle-mods/vehiclemod.jfif" alt="Vehicle Mods">
             <span>VEHICLE MODS</span>
-        </button>        <button class="category-card" type="button" data-target-page="13">
+        </button>        <button class="category-card" type="button" data-target-page="12">
             <img src="assets/indonesia/bus-liveries/livery.jfif" alt="Bus Liveries">
             <span>BUS LIVERIES</span>
-        </button>        <button class="category-card" type="button" data-target-page="14">
+        </button>        <button class="category-card" type="button" data-target-page="12">
             <img src="assets/indonesia/horns/horn.jfif" alt="Horns">
             <span>HORNS</span>
-        </button>        <button class="category-card" type="button" data-target-page="15">
+        </button>        <button class="category-card" type="button" data-target-page="12">
             <img src="assets/indonesia/maps/mapmod.jfif" alt="Maps">
             <span>MAPS</span>
         </button>
@@ -1509,13 +1296,13 @@ document.querySelectorAll(".indonesia-card").forEach(function (card) {
         <button class="category-card" type="button" data-target-page="17">
             <img src="assets/indonesia/vehicle-mods/vehiclemod.jfif" alt="Vehicle Mods">
             <span>VEHICLE MODS</span>
-        </button>        <button class="category-card" type="button" data-target-page="18">
+        </button>        <button class="category-card" type="button" data-target-page="17">
             <img src="assets/indonesia/bus-liveries/livery.jfif" alt="Bus Liveries">
             <span>BUS LIVERIES</span>
-        </button>        <button class="category-card" type="button" data-target-page="19">
+        </button>        <button class="category-card" type="button" data-target-page="17">
             <img src="assets/indonesia/horns/horn.jfif" alt="Horns">
             <span>HORNS</span>
-        </button>        <button class="category-card" type="button" data-target-page="20">
+        </button>        <button class="category-card" type="button" data-target-page="17">
             <img src="assets/indonesia/maps/mapmod.jfif" alt="Maps">
             <span>MAPS</span>
         </button>
@@ -1690,7 +1477,15 @@ document.querySelectorAll(".indonesia-card").forEach(function (card) {
 })();</script>
 <script>
 // PAGE 4 UPLOAD NAVIGATION
-/* Upload button stays on Page 3 as requested. */
+document.addEventListener("click", function(event) {
+    const button = event.target.closest("#uploadButton");
+    if (button) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        document.getElementById("page3").style.display = "none";
+        document.getElementById("page4").style.display = "block";
+    }
+}, true);
 
 document.getElementById("backHome").addEventListener("click", function() {
     document.getElementById("page4").style.display = "none";
@@ -1730,37 +1525,6 @@ document.getElementById("backHome").addEventListener("click", function() {
         } catch {
             return "";
         }
-    }
-
-    function normalizeMod(raw) {
-        const mod = Object.assign({}, raw);
-
-        mod["SELECT GAME"] =
-            mod["SELECT GAME"] || mod["GAME"] || "";
-
-        mod["SELECT CATEGORY"] =
-            mod["SELECT CATEGORY"] || mod["CATEGORY"] || "";
-
-        mod["MOD NAME"] =
-            mod["MOD NAME"] || "";
-
-        mod["MOD DESCRIPTION"] =
-            mod["MOD DESCRIPTION"] || mod["MOD DETAILS"] || "";
-
-        mod["UPLOADER NAME"] =
-            mod["UPLOADER NAME"] ||
-            mod["UPLOADER NAME  - (OPTIONAL)"] || "";
-
-        mod["MOD PHOTO LINK"] =
-            mod["MOD PHOTO LINK"] || "";
-
-        mod["SHAREMODS DOWNLOAD LINK"] =
-            mod["SHAREMODS DOWNLOAD LINK"] ||
-            mod["DOWNLOAD LINK"] ||
-            mod["UPLOAD ZIP FILE"] ||
-            mod["SHARE MODS LINK -(OPTIONAL)"] || "";
-
-        return mod;
     }
 
     function createCard(mod) {
@@ -1828,34 +1592,9 @@ document.getElementById("backHome").addEventListener("click", function() {
             empty.style.display = "block";
         });
 
-        mods.forEach(function (rawMod) {
-            const mod = normalizeMod(rawMod);
-
-            const rawGame = (mod["SELECT GAME"] || "").trim().toUpperCase();
-            const rawCategory = (mod["SELECT CATEGORY"] || "").trim().toUpperCase();
-
-            let game = "";
-            if (rawGame.includes("INDONES")) {
-                game = "Bus Simulator Indonesia";
-            } else if (rawGame.includes("INDONAS")) {
-                game = "Bus Simulator Indonesia";
-            } else if (rawGame.includes("INDIA")) {
-                game = "Bus Simulator India";
-            } else if (rawGame.includes("KERALA")) {
-                game = "Bus Simulator Kerala";
-            }
-
-            let category = "";
-            if (rawCategory.includes("VEHICLE")) {
-                category = "Vehicle Mods";
-            } else if (rawCategory.includes("LIVER")) {
-                category = "Bus Liveries";
-            } else if (rawCategory.includes("HORN")) {
-                category = "Horns";
-            } else if (rawCategory.includes("MAP")) {
-                category = "Maps";
-            }
-
+        mods.forEach(function (mod) {
+            const game = (mod["SELECT GAME"] || "").trim();
+            const category = (mod["SELECT CATEGORY"] || "").trim();
             const pageId = pageMap[game] && pageMap[game][category];
             if (!pageId) return;
 
@@ -1921,32 +1660,6 @@ document.getElementById("backHome").addEventListener("click", function() {
         }
     }
 
-    function normalizeLatestMod(raw) {
-        const mod = Object.assign({}, raw);
-
-        mod["SELECT GAME"] =
-            mod["SELECT GAME"] || mod["GAME"] || "";
-
-        mod["SELECT CATEGORY"] =
-            mod["SELECT CATEGORY"] || mod["CATEGORY"] || "";
-
-        mod["MOD NAME"] = mod["MOD NAME"] || "";
-        mod["MOD DESCRIPTION"] =
-            mod["MOD DESCRIPTION"] || mod["MOD DETAILS"] || "";
-
-        mod["UPLOADER NAME"] =
-            mod["UPLOADER NAME"] ||
-            mod["UPLOADER NAME  - (OPTIONAL)"] || "";
-
-        mod["SHAREMODS DOWNLOAD LINK"] =
-            mod["SHAREMODS DOWNLOAD LINK"] ||
-            mod["DOWNLOAD LINK"] ||
-            mod["UPLOAD ZIP FILE"] ||
-            mod["SHARE MODS LINK -(OPTIONAL)"] || "";
-
-        return mod;
-    }
-
     function renderLatest(mods) {
         const container = document.getElementById("homeLatestMods");
         if (!container) return;
@@ -1962,8 +1675,7 @@ document.getElementById("backHome").addEventListener("click", function() {
             return;
         }
 
-        latest.forEach(function (rawMod) {
-            const mod = normalizeLatestMod(rawMod);
+        latest.forEach(function (mod) {
             const card = document.createElement("article");
             card.className = "rd-latest-card";
 
@@ -1989,7 +1701,7 @@ document.getElementById("backHome").addEventListener("click", function() {
             info.appendChild(description);
 
             const meta = document.createElement("small");
-            meta.textContent = (mod["SELECT GAME"] || "") + " Ã¢â‚¬Â¢ " + (mod["SELECT CATEGORY"] || "");
+            meta.textContent = (mod["SELECT GAME"] || "") + " • " + (mod["SELECT CATEGORY"] || "");
             info.appendChild(meta);
 
             const link = safeHttps(mod["SHAREMODS DOWNLOAD LINK"]);
@@ -2736,11 +2448,6 @@ document.getElementById("backHome").addEventListener("click", function() {
 })();
 </script>
 </html>
-
-
-
-
-
 
 
 
