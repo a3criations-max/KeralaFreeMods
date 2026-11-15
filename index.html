@@ -1,3 +1,70 @@
+﻿<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const API_URL = "https://script.google.com/macros/s/AKfycbxgM1r5V4i6bn7PueQy5x8uho9u8SFnw5pRZUQ7ElrpHd6US2LwMDtNjIcMaeBu3QYc3A/exec";
+    const form = document.getElementById("uploadForm");
+    if (!form) return;
+
+    form.addEventListener("submit", function (event) {
+        if (document.getElementById("uploadType").value !== "link") return;
+
+        event.preventDefault();
+
+        const status = document.getElementById("uploadStatus");
+        const button = form.querySelector('[type="submit"]');
+        const downloadLink = document.getElementById("downloadLink").value.trim();
+
+        if (!/^https:\/\/\S+$/i.test(downloadLink)) {
+            status.textContent = "Please enter a valid HTTPS download link.";
+            return;
+        }
+
+        const fields = {
+            game: document.getElementById("game").value,
+            category: document.getElementById("category").value,
+            modName: document.getElementById("modName").value.trim(),
+            description: document.getElementById("description").value.trim(),
+            uploader: document.getElementById("uploader").value.trim(),
+            downloadLink: downloadLink
+        };
+
+        const frameName = "romanDSSubmitFrame";
+        let frame = document.getElementById(frameName);
+
+        if (!frame) {
+            frame = document.createElement("iframe");
+            frame.id = frameName;
+            frame.name = frameName;
+            frame.style.display = "none";
+            document.body.appendChild(frame);
+        }
+
+        const postForm = document.createElement("form");
+        postForm.method = "POST";
+        postForm.action = API_URL;
+        postForm.target = frameName;
+        postForm.style.display = "none";
+
+        Object.keys(fields).forEach(function (key) {
+            const input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = fields[key];
+            postForm.appendChild(input);
+        });
+
+        document.body.appendChild(postForm);
+        button.disabled = true;
+        status.textContent = "Submitting your mod...";
+        postForm.submit();
+
+        setTimeout(function () {
+            status.textContent = "Request sent. Please check the Google Sheet.";
+            button.disabled = false;
+            postForm.remove();
+        }, 3000);
+    });
+});
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -757,7 +824,7 @@ body{
 </style>
 
 <style id="rd-mod-pages-redesign-v1">
-/* ROMAN DS — MOD LIST PAGES PREMIUM WHITE REDESIGN */
+/* ROMAN DS Ã¢â‚¬â€ MOD LIST PAGES PREMIUM WHITE REDESIGN */
 .mod-list-page {
   --rd-accent: #087653;
   --rd-accent-dark: #07563e;
@@ -771,7 +838,7 @@ body{
   isolation: isolate;
 }
 
-/* Country identities — all pages remain white */
+/* Country identities Ã¢â‚¬â€ all pages remain white */
 #page7,#page8,#page9,#page10 {
   --rd-accent: #087653;
   --rd-accent-dark: #064b38;
@@ -917,7 +984,7 @@ body{
   letter-spacing: .6px;
 }
 
-/* BUS LIVERIES — large landscape artwork cards */
+/* BUS LIVERIES Ã¢â‚¬â€ large landscape artwork cards */
 #page8 .mod-card,#page13 .mod-card,#page18 .mod-card {
   display: flex !important;
   flex-direction: column;
@@ -948,7 +1015,7 @@ body{
 }
 #page8 .mod-card-info,#page13 .mod-card-info,#page18 .mod-card-info { order: 2; padding: 15px; }
 
-/* HORNS — compact audio-style listing (download links remain unchanged) */
+/* HORNS Ã¢â‚¬â€ compact audio-style listing (download links remain unchanged) */
 #page9 .mod-card,#page14 .mod-card,#page19 .mod-card {
   min-height: 118px;
   border-top: 0;
@@ -956,7 +1023,7 @@ body{
   background: linear-gradient(105deg, #ffffff, var(--rd-soft)) !important;
 }
 #page9 .mod-card::before,#page14 .mod-card::before,#page19 .mod-card::before {
-  content: '♫';
+  content: 'Ã¢â„¢Â«';
   display: grid;
   place-items: center;
   width: 42px;
@@ -970,7 +1037,7 @@ body{
 }
 #page9 .mod-card img,#page14 .mod-card img,#page19 .mod-card img { width: 76px !important; height: 76px !important; flex-basis: 76px; }
 
-/* MAPS — wide map preview cards */
+/* MAPS Ã¢â‚¬â€ wide map preview cards */
 #page10 .mod-card,#page15 .mod-card,#page20 .mod-card {
   display: flex !important;
   flex-direction: column;
@@ -1108,23 +1175,23 @@ body{
    <div class="rd-brand">
     <img class="rd-brand-logo" src="assets/desighn/romanlogo.jpeg" alt="Roman DS Logo">
    </div>
-   <span class="rd-status">● MOD HUB</span>
+   <span class="rd-status">Ã¢â€”Â MOD HUB</span>
   </header>
 
   <section class="rd-welcome">
    <span class="rd-eyebrow">WELCOME TO YOUR GAMING ZONE</span>
    <h1>BUS SIMULATOR<br><span>MOD HUB</span></h1>
    <p>Discover new mods. Share your creations. Enjoy the ride.</p>
-   <div class="rd-welcome-decoration">🎮</div>
+   <div class="rd-welcome-decoration">Ã°Å¸Å½Â®</div>
   </section>
 
   <section class="rd-actions">
    <button id="uploadButton" class="rd-action rd-upload" type="button">
-    <span class="rd-action-icon">⬆</span>
+    <span class="rd-action-icon">Ã¢Â¬â€ </span>
     <span><strong>UPLOAD MODS</strong><small>Share your creation</small></span>
    </button>
    <button id="downloadButton" class="rd-action rd-download" type="button">
-    <span class="rd-action-icon">⬇</span>
+    <span class="rd-action-icon">Ã¢Â¬â€¡</span>
     <span><strong>DOWNLOAD MODS</strong><small>Explore new mods</small></span>
    </button>
   </section>
@@ -1132,7 +1199,7 @@ body{
   <section class="rd-section">
    <div class="rd-section-heading">
     <div><span>EXPLORE</span><h2>CHOOSE YOUR GAME</h2></div>
-    <span class="rd-section-symbol">🎮</span>
+    <span class="rd-section-symbol">Ã°Å¸Å½Â®</span>
    </div>
    <div class="rd-home-games">
     <button class="rd-game-card" type="button" data-home-game="indonesia">
@@ -1153,7 +1220,7 @@ body{
   <section class="rd-section rd-latest-section">
    <div class="rd-section-heading">
     <div><span>FRESH FROM THE COMMUNITY</span><h2>LATEST MODS</h2></div>
-    <span class="rd-live-label">● LIVE</span>
+    <span class="rd-live-label">Ã¢â€”Â LIVE</span>
    </div>
    <div id="homeLatestMods" class="rd-latest-list">
     <div class="rd-latest-empty">Approved mods will appear here automatically.</div>
@@ -1202,7 +1269,7 @@ body{
  <div class="upload-container">
 
   <button class="back-home" id="backHome" type="button">
-   ← BACK TO HOME
+   Ã¢â€ Â BACK TO HOME
   </button>
 
   <h1 class="upload-heading">SHARE YOUR MOD</h1>
@@ -1358,18 +1425,7 @@ document.querySelectorAll(".game-card").forEach(function (card) {
             "Selected: " + card.dataset.game;
     });
 });</script>
-<script>
-const downloadButton = document.getElementById("downloadButton");
-const page5 = document.getElementById("page5");
-const page3 = document.getElementById("page3");
 
-if (downloadButton && page5 && page3) {
-    downloadButton.onclick = function () {
-        page3.style.display = "none";
-        page5.style.display = "block";
-    };
-}
-</script>
 
 <!-- PAGE 6: BUS SIMULATOR INDONESIA -->
 <section id="page6">
@@ -1634,15 +1690,7 @@ document.querySelectorAll(".indonesia-card").forEach(function (card) {
 })();</script>
 <script>
 // PAGE 4 UPLOAD NAVIGATION
-document.addEventListener("click", function(event) {
-    const button = event.target.closest("#uploadButton");
-    if (button) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        document.getElementById("page3").style.display = "none";
-        document.getElementById("page4").style.display = "block";
-    }
-}, true);
+/* Upload button stays on Page 3 as requested. */
 
 document.getElementById("backHome").addEventListener("click", function() {
     document.getElementById("page4").style.display = "none";
@@ -1941,7 +1989,7 @@ document.getElementById("backHome").addEventListener("click", function() {
             info.appendChild(description);
 
             const meta = document.createElement("small");
-            meta.textContent = (mod["SELECT GAME"] || "") + " • " + (mod["SELECT CATEGORY"] || "");
+            meta.textContent = (mod["SELECT GAME"] || "") + " Ã¢â‚¬Â¢ " + (mod["SELECT CATEGORY"] || "");
             info.appendChild(meta);
 
             const link = safeHttps(mod["SHAREMODS DOWNLOAD LINK"]);
@@ -2688,6 +2736,10 @@ document.getElementById("backHome").addEventListener("click", function() {
 })();
 </script>
 </html>
+
+
+
+
 
 
 
